@@ -24,7 +24,7 @@ import (
 	"strings"
 
 	"github.com/learnfromgirls/certstrap/depot"
-	"github.com/learnfrom/certstrap/pkix"
+	"github.com/learnfromgirls/certstrap/pkix"
 	"github.com/urfave/cli"
 )
 
