@@ -20,8 +20,8 @@ package main
 import (
 	"os"
 
-	"github.com/square/certstrap/cmd"
-	"github.com/square/certstrap/depot"
+	"github.com/learnfromgirls/certstrap/cmd"
+	"github.com/learnfromgirls/certstrap/depot"
 	"github.com/urfave/cli"
 )
 

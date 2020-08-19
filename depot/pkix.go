@@ -20,7 +20,7 @@ package depot
 import (
 	"strings"
 
-	"github.com/square/certstrap/pkix"
+	"github.com/learnfromgirls/certstrap/pkix"
 )
 
 const (

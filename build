@@ -2,7 +2,7 @@
 # Copyright (C) 2015 Square, Inc.
 # Copyright (C) 2014 CoreOS
 
-ORG_PATH="github.com/square"
+ORG_PATH="github.com/learnfromgirls"
 REPO_PATH="${ORG_PATH}/certstrap"
 BUILD_TAG="${TRAVIS_TAG:-dev-$(git rev-parse HEAD | head -c 8)}"
 

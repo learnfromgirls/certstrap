@@ -22,8 +22,8 @@ import (
 	"os"
 	"strings"
 
-	"github.com/square/certstrap/depot"
-	"github.com/square/certstrap/pkix"
+	"github.com/learnfromgirls/certstrap/depot"
+	"github.com/learnfromgirls/certstrap/pkix"
 	"github.com/urfave/cli"
 )
 
