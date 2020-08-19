@@ -67,6 +67,10 @@ func NewSignCommand() cli.Command {
 				Name:  "intermediate",
 				Usage: "Whether generated certificate should be a intermediate",
 			},
+			cli.BoolFlag{
+				Name:  "codesigning",
+				Usage: "Whether generated certificate should include a codesigning extkeyusage",
+			},
 		},
 		Action: newSignAction,
 	}
@@ -141,10 +145,12 @@ func newSignAction(c *cli.Context) {
 	if c.Bool("intermediate") {
 		fmt.Fprintln(os.Stderr, "Building intermediate")
 		crtOut, err = pkix.CreateIntermediateCertificateAuthority(crt, key, csr, expiresTime)
-	} else {
-		crtOut, err = pkix.CreateCertificateHost(crt, key, csr, expiresTime)
+	} else if c.Bool("codesign") {
+		crtOut, err = pkix.CreateCertificateHost(crt, key, csr, expiresTime, true);
+	} else  {
+		crtOut, err = pkix.CreateCertificateHost(crt, key, csr, expiresTime, false);
 	}
-
+ 
 	if err != nil {
 		fmt.Fprintln(os.Stderr, "Create certificate error:", err)
 		os.Exit(1)

@@ -27,7 +27,7 @@ import (
 
 // CreateCertificateHost creates certificate for host.
 // The arguments include CA certificate, CA key, certificate request.
-func CreateCertificateHost(crtAuth *Certificate, keyAuth *Key, csr *CertificateSigningRequest, proposedExpiry time.Time) (*Certificate, error) {
+func CreateCertificateHost(crtAuth *Certificate, keyAuth *Key, csr *CertificateSigningRequest, proposedExpiry time.Time, codeSigning bool) (*Certificate, error) {
 	// Build CA based on RFC5280
 	hostTemplate := x509.Certificate{
 		// **SHOULD** be filled in a unique number
@@ -94,6 +94,14 @@ func CreateCertificateHost(crtAuth *Certificate, keyAuth *Key, csr *CertificateS
 	hostTemplate.IPAddresses = rawCsr.IPAddresses
 	hostTemplate.DNSNames = rawCsr.DNSNames
 	hostTemplate.URIs = rawCsr.URIs
+	
+	if(codeSigning){
+	  hostTemplate.ExtKeyUsage =  []x509.ExtKeyUsage{
+			x509.ExtKeyUsageServerAuth,
+			x509.ExtKeyUsageClientAuth,
+			x509.ExtKeyUsageCodeSigning,
+		}
+	}
 
 	rawCrtAuth, err := crtAuth.GetRawCertificate()
 	if err != nil {
