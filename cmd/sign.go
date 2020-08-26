@@ -145,7 +145,8 @@ func newSignAction(c *cli.Context) {
 	if c.Bool("intermediate") {
 		fmt.Fprintln(os.Stderr, "Building intermediate")
 		crtOut, err = pkix.CreateIntermediateCertificateAuthority(crt, key, csr, expiresTime)
-	} else if c.Bool("codesign") {
+	} else if c.Bool("codesigning") {
+		fmt.Fprintln(os.Stderr, "Including extkeyusage codesigning")
 		crtOut, err = pkix.CreateCertificateHost(crt, key, csr, expiresTime, true);
 	} else  {
 		crtOut, err = pkix.CreateCertificateHost(crt, key, csr, expiresTime, false);
