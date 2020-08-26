@@ -186,7 +186,7 @@ Here are some ant tasks which I use.
   </target>
   
 ```
-### Upload you signed jar files to your webserver together with a suitable .jnlp file
+### Upload your signed jar files to your webserver together with a suitable .jnlp file
 
 Here is the jnlp file which I use:-
 ```
@@ -226,9 +226,10 @@ $ javaws https://www.turboalgorithms.com/vertical.jnlp
 
 ```
 
-If there is no javaws command even available, you will need to install java from java.com first.
+If there is no javaws command even available, you will need to install java from java.com first
+(download the recommended version for your operating system and accept oracles terms and conditions (it is free for personal use). Ignore all instructions concerning integrating java with your web browser as we will only use the command line for execution , NOT via the web browser).
 
-The jawaws command will 
+The javaws command will 
 most likely fail initially as the self signed certificates are not trusted and there is no infrastructure for timestamps and certificate revocations.
 
 You can bypass this by adding the website to a list of trusted sites (on each client machine).
@@ -247,7 +248,9 @@ https://wwww.turboalgorithms.com/
 
 Then finish the entry with a tab key and click "OK" to close the "Exception Site List" dialog , then "OK" to close the "Java Control Panel" dialog.
 
-Now you can retry the original command and it will now be allowed after you determinately tell it that you trust this program and wish to proceed with execution. (javaws will be trying to avoid execution)  you from  Note that the signer will be still shown as "UNKNOWN" and that is again due to fact that javaws does not have full trust in the self signed certificate authority and its associated timestamp and revocation list infrastructure and so has chosen not to display the arbitrary name information on the certificates.
+Now you can retry the original command and it will now be allowed after you determinately tell it that you trust this program and wish to proceed with execution. (javaws will be trying to avoid execution)
+
+Note that the signer will be still shown as "UNKNOWN" and that is again due to fact that javaws does not have full trust in the self signed certificate authority and its associated timestamp and revocation list infrastructure and so has chosen not to display the arbitrary name information on the certificates.
 
 ```
 $ javaws https://www.turboalgorithms.com/vertical.jnlp
